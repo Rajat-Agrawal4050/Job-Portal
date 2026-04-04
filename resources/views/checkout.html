@@ -1,0 +1,221 @@
+<?php
+session_start();
+include 'config/connection.php'; ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- /checkout.html  [XR&CO'2014],  08:44:33 GMT -->
+<?php include 'site_head.php'; ?>
+
+<body class="bg-wight">
+<div class="eg-preloder">
+</div>
+
+<?php include 'header2.php' ?>
+
+
+<div class="inner-banner">
+<div class="container">
+<div class="row">
+<div class="col-lg-12">
+<div class="banner-content text-center">
+<h1>Checkout Page</h1>
+<span></span>
+<nav aria-label="breadcrumb">
+<ol class="breadcrumb">
+<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+<li class="breadcrumb-item active" aria-current="page">Checkout Page</li>
+</ol>
+</nav>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="checkout-pages-area pt-120 mb-120">
+<div class="container">
+<div class="row">
+<div class="col-lg-12">
+<div class="checkout-form form-wrapper">
+<form>
+<div class="title-and-coupon">
+<div class="title">
+<h5>Company Information:</h5>
+</div>
+<div class="coupon-area">
+<p>Do you have an coupon code? <a href="#">Click Here</a></p>
+</div>
+</div>
+<div class="row mb-20">
+<div class="col-md-6">
+<div class="form-inner mb-25">
+<label for="name">Full Name*</label>
+<div class="input-area">
+<img src="assets/images/icon/user-2.svg" alt>
+<input type="text" id="name" name="name" placeholder="Mr. Jackson Mile">
+</div>
+</div>
+</div>
+<div class="col-md-6">
+<div class="form-inner mb-25">
+<label for="companyname">Company Name*</label>
+<div class="input-area">
+<img src="assets/images/icon/company-2.svg" alt>
+<input type="text" id="companyname" name="name" placeholder="Elite Hangstroman">
+</div>
+</div>
+</div>
+<div class="col-md-6">
+<div class="form-inner mb-25">
+<label for="phonenumber">Phone*</label>
+<div class="input-area">
+<img src="assets/images/icon/phone-2.svg" alt>
+<input type="text" id="phonenumber" name="phonenumber" placeholder="+880-17 *** *** **">
+</div>
+</div>
+</div>
+<div class="col-md-6">
+<div class="form-inner mb-25">
+<label for="companyaddress">Company Address*</label>
+<div class="input-area">
+<img src="assets/images/icon/map-2.svg" alt>
+<input type="text" id="companyaddress" name="phonenumber" placeholder="Address Here">
+</div>
+</div>
+</div>
+<div class="col-md-6">
+<div class="form-inner mb-25">
+<label for="email3">Email*</label>
+<div class="input-area">
+<img src="assets/images/icon/email-2.svg" alt>
+<input type="text" id="email3" name="email" placeholder="info@example.com">
+</div>
+</div>
+</div>
+<div class="col-md-6">
+<div class="form-inner mb-25">
+<label for="country">Country*</label>
+<div class="input-area">
+<img src="assets/images/icon/map-2.svg" alt>
+<input type="text" id="country" name="country" placeholder="Bangladesh">
+</div>
+</div>
+</div>
+</div>
+<div class="service-title">
+<h5>Corporate Service: </h5>
+<span>(Select Your Previous Add-On)</span>
+</div>
+<div class="multi-select-area">
+<div class="single-select">
+<div class="form-check">
+<input class="form-check-input" type="checkbox" value id="flexCheckDefault" checked>
+<label class="form-check-label" for="flexCheckDefault">
+Featured Job
+</label>
+</div>
+</div>
+<div class="single-select">
+<div class="form-check">
+<input class="form-check-input" type="checkbox" value id="flexCheckDefault1" checked>
+<label class="form-check-label" for="flexCheckDefault1">
+Hotest Job
+</label>
+</div>
+</div>
+<div class="single-select">
+<div class="form-check">
+<input class="form-check-input" type="checkbox" value id="flexCheckDefault2">
+<label class="form-check-label" for="flexCheckDefault2">
+Featured Job
+</label>
+</div>
+</div>
+<div class="single-select">
+<div class="form-check">
+<input class="form-check-input" type="checkbox" value id="flexCheckDefault3">
+<label class="form-check-label" for="flexCheckDefault3">
+Highlighted Job
+</label>
+</div>
+</div>
+<div class="single-select">
+<div class="form-check">
+<input class="form-check-input" type="checkbox" value id="flexCheckDefault4">
+<label class="form-check-label" for="flexCheckDefault4">
+Trending Job
+</label>
+</div>
+</div>
+<div class="single-select">
+<div class="form-check">
+<input class="form-check-input" type="checkbox" value id="flexCheckDefault5">
+<label class="form-check-label" for="flexCheckDefault5">
+Featured Job
+</label>
+</div>
+</div>
+</div>
+<div class="row g-4 mb-60">
+<div class="col-lg-6">
+<div class="total-payment-area">
+<div class="payment-title">
+<h5>Total Payment</h5>
+</div>
+<div class="payment-value">
+<h3>$30/ <span>Only</span></h3>
+</div>
+</div>
+</div>
+<div class="col-lg-6">
+<div class="payment-mathord">
+<div class="payment-title">
+<h5>Payment Granted :</h5>
+</div>
+<ul>
+<li><img src="assets/images/bg/payment-method-01.png" alt></li>
+<li><img src="assets/images/bg/payment-method-02.png" alt></li>
+<li><img src="assets/images/bg/payment-method-03.png" alt></li>
+<li><img src="assets/images/bg/payment-method-04.png" alt></li>
+<li><img src="assets/images/bg/payment-method-05.png" alt></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="payment-and-support">
+<div class="payment-btn">
+<button class="primry-btn-2 w-unset" type="submit">Pay Now Securely</button>
+</div>
+<div class="support-area">
+<div class="icon">
+<svg width="26" height="26" viewbox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+<g opacity="0.8">
+<path d="M21.1187 22.6455L20.1456 19.7326C19.9788 19.2334 19.6805 18.7881 19.282 18.4434C18.8835 18.0986 18.3994 17.8671 17.8805 17.773L15.0714 17.263V17.0458C15.5602 16.7627 15.9856 16.384 16.3244 15.9357H17.173C17.8683 15.9357 18.434 15.3713 18.434 14.6777V9.64532C18.434 6.63934 15.9827 4.19362 12.9697 4.19362C9.9568 4.19362 7.50543 6.63934 7.50543 9.64532V12.5809C7.50543 13.3894 8.08171 14.0658 8.84587 14.2235C9.08167 15.4287 9.83659 16.4486 10.8681 17.0458V17.263L8.05859 17.773C7.53968 17.8671 7.05568 18.0986 6.65724 18.4434C6.25881 18.7882 5.9606 19.2335 5.79384 19.7326L5.62571 20.2363L4.19406 18.808C4.03013 18.6444 4.03013 18.3781 4.19406 18.2146L5.85437 16.5585L2.73804 13.4494L0.861679 15.3214C0.306001 15.8758 0 16.613 0 17.3972C0 18.1814 0.306001 18.9182 0.861679 19.4726L6.54245 25.1403C7.09813 25.6947 7.83707 26.0004 8.62309 26.0004C9.40911 26.0004 10.1476 25.6947 10.6903 25.1529L12.7377 23.2813L12.0992 22.6455H21.1187ZM17.5934 14.6777C17.5934 14.9091 17.4046 15.097 17.173 15.097H16.8195C16.9428 14.8168 17.0347 14.5238 17.0936 14.2235C17.2735 14.1862 17.4391 14.1149 17.5934 14.0251V14.6777ZM17.173 13.303V11.8587C17.4231 12.0042 17.5934 12.2718 17.5934 12.5809C17.5934 12.8899 17.4231 13.1575 17.173 13.303ZM8.76642 13.303C8.51633 13.1575 8.34609 12.8899 8.34609 12.5809C8.34609 12.2718 8.51633 12.0042 8.76642 11.8587V13.303ZM8.76642 10.484V10.963C8.61902 11.0014 8.47759 11.0598 8.34609 11.1366V9.64532C8.34609 7.10189 10.4204 5.03234 12.9697 5.03234C15.519 5.03234 17.5934 7.10189 17.5934 9.64532V11.1366C17.462 11.0596 17.3205 11.0012 17.173 10.963V10.484H16.7527C15.5098 10.484 14.3413 10.0009 13.4619 9.12405L12.9697 8.63298L12.4775 9.12405C11.5982 10.0009 10.4297 10.484 9.18676 10.484H8.76642ZM9.60709 13.4196V11.3068C10.8693 11.2121 12.0463 10.6925 12.9697 9.81642C13.8932 10.6925 15.0701 11.2125 16.3324 11.3068V13.4196C16.3324 14.031 16.1651 14.603 15.8776 15.097H12.9697V15.9357H15.1866C14.5939 16.4562 13.8192 16.7745 12.9697 16.7745C11.1157 16.7745 9.60709 15.2694 9.60709 13.4196ZM14.2307 17.4199V17.4396L12.9697 18.6977L11.7087 17.4396V17.4199C12.1072 17.5448 12.5305 17.6132 12.9697 17.6132C13.409 17.6132 13.8323 17.5448 14.2307 17.4199ZM6.59079 19.9977C6.70995 19.6411 6.92298 19.3229 7.2076 19.0766C7.49222 18.8303 7.83795 18.6648 8.20864 18.5974L11.1468 18.0648L12.9697 19.8836L14.7923 18.0653L17.73 18.5979C18.1007 18.6651 18.4465 18.8306 18.7311 19.0769C19.0157 19.3233 19.2287 19.6414 19.3478 19.9981L19.9527 21.8068H11.2586L9.62138 20.1734L7.80219 21.8152C7.64372 21.9741 7.36672 21.9741 7.20784 21.8152L6.28983 20.8993L6.59079 19.9977ZM2.73762 14.6353L4.66525 16.5585L4.20877 17.0139L2.28114 15.0907L2.73762 14.6353ZM10.1081 24.5482C9.71133 24.9432 9.18339 25.1617 8.62225 25.1617C8.06111 25.1617 7.53317 24.9432 7.13596 24.5473L1.45519 18.8801C1.05839 18.4842 0.839821 17.9575 0.839821 17.3976C0.839821 16.8374 1.05839 16.3107 1.45519 15.9148L1.68637 15.6841L3.61401 17.6073L3.59887 17.6224C3.10751 18.1131 3.10751 18.9111 3.59887 19.4018L6.61307 22.409C6.8514 22.6464 7.16791 22.7776 7.50501 22.7776C7.84212 22.7776 8.15863 22.6468 8.3814 22.4237L8.41293 22.3956L10.3494 24.3276L10.1081 24.5482ZM10.9698 23.7598L9.03754 21.832L9.5928 21.3313L11.5217 23.2557L10.9698 23.7598ZM24.739 0H18.8544C18.1591 0 17.5934 0.564461 17.5934 1.25809V4.61298C17.5934 5.3066 18.1591 5.87106 18.8544 5.87106H19.9771L19.5425 8.40024L23.5986 5.87106H24.739C25.4342 5.87106 26 5.3066 26 4.61298V1.25809C26 0.564461 25.4342 0 24.739 0ZM25.1593 4.61298C25.1593 4.84405 24.9706 5.03234 24.739 5.03234H23.3574L20.6879 6.69679L20.9741 5.03234H18.8544C18.6228 5.03234 18.434 4.84405 18.434 4.61298V1.25809C18.434 1.02702 18.6228 0.838724 18.8544 0.838724H24.739C24.9706 0.838724 25.1593 1.02702 25.1593 1.25809V4.61298Z" />
+<path d="M19.2751 1.67743H24.3191V2.51616H19.2751V1.67743ZM19.2751 3.35488H22.6378V4.1936H19.2751V3.35488ZM23.4784 3.35488H24.3191V4.1936H23.4784V3.35488ZM12.9702 1.25807C7.47811 1.25807 2.74728 5.04826 1.5174 10.3352L0.720868 9.01039L0 9.44192L1.47746 11.8981L3.93934 10.4241L3.50682 9.70486L2.36773 10.3867C3.55894 5.55024 7.9182 2.0968 12.9702 2.0968C14.0744 2.0968 15.1639 2.26035 16.2084 2.58325L16.4572 1.78227C15.332 1.4342 14.1589 1.25807 12.9702 1.25807ZM25.7961 9.28549L23.3343 7.81144L21.8572 10.2681L22.5781 10.6996L23.3137 9.4763C23.7008 10.6065 23.8988 11.7887 23.8988 13.0002C23.8988 15.4941 23.0329 17.9323 21.4613 19.8652L22.114 20.3935C23.8071 18.3118 24.7394 15.6858 24.7394 13.0002C24.7394 11.7174 24.5322 10.4647 24.1283 9.26536L25.3636 10.0047L25.7961 9.28549Z" />
+</g>
+</svg>
+</div>
+<div class="content">
+<span>Support Line</span>
+<h5><a href="tel:+099-03573983465">+099-035 7398 3465</a></h5>
+</div>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<?php include 'footer.php'; ?>
+
+<?php include 'common_scripts.php'; ?>
+
+</body>
+
+<!-- /checkout.html  [XR&CO'2014],  08:44:34 GMT -->
+</html>
