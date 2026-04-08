@@ -358,7 +358,7 @@ use Illuminate\Support\Facades\Request;
                         </div>
 
                         @endforeach
-                        {{ $jobs->links() }}
+                        {{ $jobs->links('vendor.pagination.custom') }}
 
                         @else
                         <div class="w-50 mx-auto text-center alert alert-danger">No Job Found</div>

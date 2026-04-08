@@ -84,7 +84,7 @@ class AuthController extends Controller
       $user->password = Hash::make($r->password3);
       $user->save();
 
-      session()->flash('success', 'You have registered Sucessfully.');
+      Auth::login($user);
 
       return response()->json([
         'status' => true,
@@ -142,6 +142,8 @@ class AuthController extends Controller
     Auth::logout();
     return redirect()->route('home');
   }
+
+  
 
   function uploadImage(Request $r)
   {

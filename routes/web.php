@@ -13,7 +13,6 @@ use App\Http\Controllers\admin\JobsController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/job-post', [JobController::class, 'job_post'])->name('job.post_form');
 Route::get('/job-list', [JobController::class, 'job_list'])->name('job.list');
@@ -39,8 +38,15 @@ Route::get('/user/profile', [AuthController::class, 'user_profile'])->name('user
 Route::put('/update-profile', [AuthController::class, 'updateProfile'])->name('update.profile');
 Route::post('/update-password', [AuthController::class, 'updatePassword'])->name('update.password');
 Route::get('/my-applications', [JobController::class, 'my_applications'])->name('my.applications');
+ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
+// Guest Routes
+ Route::get('/login', [AuthController::class, 'login'])->name('login');
+    Route::get('/register', [AuthController::class, 'register'])->name('register');
+    Route::post('/login', [AuthController::class, 'processLogin'])->name('auth.processLogin');
+    Route::post('/register', [AuthController::class, 'processRegister'])->name('auth.processRegister');
+    
 // Admin Routes
 Route::middleware('admin')->group(function () {
 
@@ -56,12 +62,4 @@ Route::post('/admin/edit_job', [JobsController::class, 'editJob'])->name('admin.
 Route::post('/admin/delete_job', [JobsController::class, 'deleteJob'])->name('admin.delete_job');
 Route::get('/admin/job_applications', [JobsController::class, 'show_job_applications'])->name('admin.job_applications');
 Route::post('/admin/remove_application', [JobsController::class, 'removeApplication'])->name('admin.remove_application');
-});
-// Guest Routes
-Route::middleware([GuestUser::class])->group(function () {
-
-    Route::get('/register', [AuthController::class, 'register'])->name('auth.register');
-    Route::get('/login', [AuthController::class, 'login'])->name('login');
-    Route::post('/register', [AuthController::class, 'processRegister'])->name('auth.processRegister');
-    Route::post('/login', [AuthController::class, 'processLogin'])->name('auth.processLogin');
 });

@@ -1,6 +1,11 @@
 @extends('layouts.layout')
 @section('content1')
 
+<!-- @if ($user = Auth::guard('api')->user()) 
+     {{ 'yes' }}
+     @else
+     {{'no'}}
+     @endif -->
 <div class="hero1" style="background: url('')">
   <div class="container">
     <div class="row">
