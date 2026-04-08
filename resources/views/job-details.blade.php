@@ -131,7 +131,7 @@ use App\Models\SavedJob;
                   @endif
 
               </li>
-              
+
               <li>
                 @if(Auth::check() && JobApplication::where(['user_id'=> Auth::user()->id, 'job_id'=> $job_detail->id])->count()<=0)
                   <button id="applyBtn" data-id="{{ $job_detail->id }}" style="cursor: pointer;"
@@ -218,7 +218,7 @@ use App\Models\SavedJob;
                   data-cfemail="5e373038311e3b263f332e323b703d3133">[email&#160;protected]</span></a>
             </p>
           </div>
-          <div class="location-area">
+          <!-- <div class="location-area">
             <h6>Get Location:</h6>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3649.564763018799!2d90.36349791490355!3d23.834071191491947!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c14c8682a473%3A0xa6c74743d52adb88!2sEgens%20Lab!5e0!3m2!1sen!2sbd!4v1674212581590!5m2!1sen!2sbd"
@@ -226,7 +226,7 @@ use App\Models\SavedJob;
               allowfullscreen
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -583,7 +583,7 @@ use App\Models\SavedJob;
 
             },
             error: function(xhr, status, code) {
-            Swal.fire('Something went wrong', '', 'error');
+              Swal.fire('Something went wrong', '', 'error');
               console.error(xhr.responseText);
             }
 

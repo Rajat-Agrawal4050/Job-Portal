@@ -20,9 +20,14 @@
                     <img src="assets/images/icon/job2.svg" alt="image" />
                   </div>
                   <div class="coundown">
+                    <?php
+
+                    use App\Models\AllJob;
+                    use App\Models\JobApplication;
+                    ?>
                     <p>Live Jobs</p>
                     <div class="d-flex align-items-center gap-2">
-                      <h3 class="odometer">5</h3>
+                      <h3 class="odometer">{{ AllJob::where('status',1)->count() }}</h3>
                     </div>
                   </div>
                 </div>
@@ -37,7 +42,7 @@
                   <div class="coundown">
                     <p>Companies</p>
                     <div class="d-flex align-items-center gap-2">
-                      <h3 class="odometer">2</h3>
+                      <h3 class="odometer">{{ AllJob::select('user_id')->distinct()->get()->count() }}</h3>
                       <span>+</span>
                     </div>
                   </div>
@@ -51,9 +56,9 @@
                       alt="image" />
                   </div>
                   <div class="coundown">
-                    <p>Candidates</p>
+                    <p>Applicants</p>
                     <div class="d-flex align-items-center gap-2">
-                      <h3 class="odometer">6</h3>
+                      <h3 class="odometer">{{ JobApplication::select('user_id')->distinct()->get()->count() }}</h3>
                       <span>+</span>
                     </div>
                   </div>
@@ -69,7 +74,7 @@
                   <div class="coundown">
                     <p>Total Jobs</p>
                     <div class="d-flex align-items-center gap-2">
-                      <h3 class="odometer">20</h3>
+                      <h3 class="odometer">{{ AllJob::count() }}</h3>
                       <span>+</span>
                     </div>
                   </div>
@@ -152,8 +157,8 @@
               </div>
               <div class="category-content">
                 <div class="category-icon"></div>
-                <h5><a href="job-listing1.html">{{ $cat->name }}</a></h5>
-                <p>Open Post: <span>0</span></p>
+                <h5><a href="job-listing?cat={{ $cat->id }}">{{ $cat->name }}</a></h5>
+                <p>Open Post: <span>{{ AllJob::where('status',1)->where('category_id',$cat->id)->count() }}</span></p>
               </div>
             </div>
           </div>

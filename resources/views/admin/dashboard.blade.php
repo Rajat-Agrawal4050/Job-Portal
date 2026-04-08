@@ -186,7 +186,7 @@
                   <div class="coundown">
                     <p>Companies</p>
                     <div class="d-flex align-items-center gap-2">
-                      <h4 style="color: #00a7ac" class="odometer">{{ AllJob::select('user_id')->distinct()->count() }}</h4>
+                      <h4 style="color: #00a7ac" class="odometer">{{ AllJob::select('user_id')->distinct()->get()->count() }}</h4>
                       <span
                         style="
                               color: #00a7ac;
@@ -208,7 +208,7 @@
                   <div class="coundown">
                     <p>Applicants</p>
                     <div class="d-flex align-items-center gap-2">
-                      <h4 style="color: #00a7ac" class="odometer">{{ JobApplication::select('user_id')->distinct()->count() }}</h4>
+                      <h4 style="color: #00a7ac" class="odometer">{{ JobApplication::select('user_id')->distinct()->get()->count() }}</h4>
                       <span
                         style="
                               color: #00a7ac;

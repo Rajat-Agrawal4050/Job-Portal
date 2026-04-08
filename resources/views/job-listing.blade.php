@@ -315,7 +315,7 @@ use Illuminate\Support\Facades\Request;
                                                         <p><span class="title">Salary:</span> &#8377; {{ $job->salary }} / <span class="time">Per Month</span></p>
                                                     </li>
                                                     <li>
-                                                        <p><span class="title">Create Date:</span>{{ \Carbon\Carbon::parse($job->created_at)->format('d M, Y') }}</p>
+                                                        <p><span class="title">Create Date:</span> {{ \Carbon\Carbon::parse($job->created_at)->format('d M, Y') }}</p>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -358,9 +358,13 @@ use Illuminate\Support\Facades\Request;
                         </div>
 
                         @endforeach
+                        {{ $jobs->links() }}
+
+                        @else
+                        <div class="w-50 mx-auto text-center alert alert-danger">No Job Found</div>
                         @endif
 
-                        {{ $jobs->links() }}
+
                         <!-- <div class="col-lg-12 d-flex justify-content-center">
                             <div class="pagination-area">
                                 <nav aria-label="...">
