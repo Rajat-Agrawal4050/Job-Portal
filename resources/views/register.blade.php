@@ -98,6 +98,19 @@
                         <button id="btn1" style="cursor: pointer;" class="primry-btn-2" type="submit">Sign Up</button>
                       </div>
                     </div>
+                          <div class="col-lg-12 text-center">
+                      <a href="{{ route('auth.google.redirect') }}" class="btn btn-light btn-lg text-center align-items-center shadow-sm border rounded-pill px-4 py-2 my-4">
+                        <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google Logo" class="me-2" width="24" height="24">
+                        &nbsp; <span class="">Login with Google</span>
+                      </a>
+                      @foreach (['error', 'success', 'warning', 'info'] as $type)
+                      @if (session($type))
+                      <div class="my-2 alert alert-{{ $type }}">
+                        {{ session($type) }}
+                      </div>
+                      @endif
+                      @endforeach
+                    </div>
                     <h6>Already have an account? <a href="login"> Login</a> Here</h6>
 
                   </div>

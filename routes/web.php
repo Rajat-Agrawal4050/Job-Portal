@@ -9,6 +9,7 @@ use App\Http\Middleware\GuestUser;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\admin\JobsController;
+use App\Http\Controllers\GoogleAuthController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -34,32 +35,38 @@ Route::post('/remove-application', [JobController::class, 'removeApplication'])-
 // Authenticated Routes
 Route::middleware('auth')->group(function () {
 
-Route::get('/user/profile', [AuthController::class, 'user_profile'])->name('user.profile');
-Route::put('/update-profile', [AuthController::class, 'updateProfile'])->name('update.profile');
-Route::post('/update-password', [AuthController::class, 'updatePassword'])->name('update.password');
-Route::get('/my-applications', [JobController::class, 'my_applications'])->name('my.applications');
- Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/user/profile', [AuthController::class, 'user_profile'])->name('user.profile');
+    Route::put('/update-profile', [AuthController::class, 'updateProfile'])->name('update.profile');
+    Route::post('/update-password', [AuthController::class, 'updatePassword'])->name('update.password');
+    Route::get('/my-applications', [JobController::class, 'my_applications'])->name('my.applications');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
 // Guest Routes
- Route::get('/login', [AuthController::class, 'login'])->name('login');
-    Route::get('/register', [AuthController::class, 'register'])->name('register');
-    Route::post('/login', [AuthController::class, 'processLogin'])->name('auth.processLogin');
-    Route::post('/register', [AuthController::class, 'processRegister'])->name('auth.processRegister');
-    
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/login', [AuthController::class, 'processLogin'])->name('auth.processLogin');
+Route::post('/register', [AuthController::class, 'processRegister'])->name('auth.processRegister');
+
 // Admin Routes
 Route::middleware('admin')->group(function () {
 
-Route::get('/admin/dashboard', [AuthController::class, 'dashboard'])->name('admin.dashboard');
-Route::get('/admin/user_list', [UserController::class, 'users'])->name('admin.user_list');
-Route::get('/admin/edit_user/{id}', [UserController::class, 'show_edit_user'])->name('admin.show_edit_user');
+    Route::get('/admin/dashboard', [AuthController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/admin/user_list', [UserController::class, 'users'])->name('admin.user_list');
+    Route::get('/admin/edit_user/{id}', [UserController::class, 'show_edit_user'])->name('admin.show_edit_user');
 
-Route::post('/admin/edit_user', [UserController::class, 'editUser'])->name('edit_user');
-Route::delete('/admin/delete_user', [UserController::class, 'deleteUser'])->name('delete.user');
-Route::get('/admin/jobs', [JobsController::class, 'all_jobs'])->name('admin.jobs');
-Route::get('/admin/edit_job/{id}', [JobsController::class, 'show_edit_job'])->name('admin.show_edit_job');
-Route::post('/admin/edit_job', [JobsController::class, 'editJob'])->name('admin.edit_job');
-Route::post('/admin/delete_job', [JobsController::class, 'deleteJob'])->name('admin.delete_job');
-Route::get('/admin/job_applications', [JobsController::class, 'show_job_applications'])->name('admin.job_applications');
-Route::post('/admin/remove_application', [JobsController::class, 'removeApplication'])->name('admin.remove_application');
+    Route::post('/admin/edit_user', [UserController::class, 'editUser'])->name('edit_user');
+    Route::delete('/admin/delete_user', [UserController::class, 'deleteUser'])->name('delete.user');
+    Route::get('/admin/jobs', [JobsController::class, 'all_jobs'])->name('admin.jobs');
+    Route::get('/admin/edit_job/{id}', [JobsController::class, 'show_edit_job'])->name('admin.show_edit_job');
+    Route::post('/admin/edit_job', [JobsController::class, 'editJob'])->name('admin.edit_job');
+    Route::post('/admin/delete_job', [JobsController::class, 'deleteJob'])->name('admin.delete_job');
+    Route::get('/admin/job_applications', [JobsController::class, 'show_job_applications'])->name('admin.job_applications');
+    Route::post('/admin/remove_application', [JobsController::class, 'removeApplication'])->name('admin.remove_application');
 });
+
+// Route to redirect to Google's OAuth page
+Route::get('/auth/google/redirect', [GoogleAuthController::class, 'redirect'])->name('auth.google.redirect');
+
+// Route to handle the callback from Google
+Route::get('/auth/google/callback', [GoogleAuthController::class, 'callback'])->name('auth.google.callback');
