@@ -116,6 +116,8 @@ class AuthController extends Controller
 
       if (Auth::attempt(['email' => $r->email, 'password' => $r->password], $remember)) {
 
+      $r->session()->regenerate(); 
+
         return response()->json([
           'status' => true,
           'login' => true,
@@ -140,6 +142,9 @@ class AuthController extends Controller
   {
 
     Auth::logout();
+     $r->session()->invalidate();
+     $r->session()->regenerateToken(); // Regenerate CSRF token
+     
     return redirect()->route('home');
   }
 

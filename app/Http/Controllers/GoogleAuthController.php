@@ -8,6 +8,8 @@ use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Throwable;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 
 class GoogleAuthController extends Controller
 {
@@ -22,7 +24,7 @@ class GoogleAuthController extends Controller
     /**
      * Handle the callback from Google.
      */
-    public function callback()
+    public function callback(Request $r)
     {
         try {
             // Get the user information from Google
@@ -37,16 +39,17 @@ class GoogleAuthController extends Controller
         if ($existingUser) {
             // Log the user in if they already exist
             Auth::login($existingUser);
+            $r->session()->regenerate();
         } else {
             // Otherwise, create a new user and log them in
-            $newUser = User::updateOrCreate([
-                'email' => $user->email
-            ], [
+            $newUser = User::create([
+                'email' => $user->email,
                 'name' => $user->name,
-                'password' => bcrypt(Str::random(16)), // Set a random password
-                'email_verified_at' => now()
+                'password' => Hash::make(Str::random(16)), // Set a random password
+                'email_verified_at' => date('Y-m-d H:i:s')
             ]);
             Auth::login($newUser);
+            $r->session()->regenerate();
         }
 
         // Redirect the user to the dashboard or any other secure page

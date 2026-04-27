@@ -82,7 +82,7 @@
                       </a>
                       @foreach (['error', 'success', 'warning', 'info'] as $type)
                       @if (session($type))
-                      <div class="my-2 alert alert-{{ $type }}">
+                      <div class="my-2 text-danger alert alert-{{ $type }}">
                         {{ session($type) }}
                       </div>
                       @endif
