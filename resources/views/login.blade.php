@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('content1')
 
-<div class="login-area register-area pt-50 mb-120">
+<div class="login-area register-area pt-10 mb-120">
   <div class="container">
     @if(Session::has('success'))
     <div class="alert alert-success">
@@ -41,7 +41,7 @@
 
                 <form action="#" method="POST" id="userLoginForm">
                   @csrf
-                  <div class="row" style="margin-top:-45px">
+                  <div class="row" style="margin-top:-90px">
                     <div class="col-lg-12">
                       <div class="form-inner mb-25">
                         <label for="email">Email*</label>

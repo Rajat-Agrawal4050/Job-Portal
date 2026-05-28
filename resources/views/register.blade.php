@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('content1')
 
-<div class="register-area pt-80 mb-120">
+<div class="register-area pt-10 mb-120">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
