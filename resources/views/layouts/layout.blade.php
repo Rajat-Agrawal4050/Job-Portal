@@ -38,7 +38,7 @@
 
   <link rel="stylesheet" href="{{ asset('assets/css/jquery-ui.css') }}" />
 
-  <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
   <link
     href="{{ asset('sweet-alert2/sweetalert2.min.css') }}"
     rel="stylesheet"
