@@ -70,3 +70,24 @@ Route::get('/auth/google/redirect', [GoogleAuthController::class, 'redirect'])->
 
 // Route to handle the callback from Google
 Route::get('/auth/google/callback', [GoogleAuthController::class, 'callback'])->name('auth.google.callback');
+
+Route::get('/debug-mail', function () {
+    $results = [];
+    
+    // Port 587 check
+    $conn587 = @fsockopen('smtp.gmail.com', 587, $errno, $errstr, 5);
+    $results['port_587'] = $conn587 ? '✅ OPEN' : '❌ BLOCKED: ' . $errstr;
+    if ($conn587) fclose($conn587);
+    
+    // Port 465 check
+    $conn465 = @fsockopen('smtp.gmail.com', 465, $errno, $errstr, 5);
+    $results['port_465'] = $conn465 ? '✅ OPEN' : '❌ BLOCKED: ' . $errstr;
+    if ($conn465) fclose($conn465);
+
+    // Port 2525 check (alternative)
+    $conn2525 = @fsockopen('smtp.gmail.com', 2525, $errno, $errstr, 5);
+    $results['port_2525'] = $conn2525 ? '✅ OPEN' : '❌ BLOCKED: ' . $errstr;
+    if ($conn2525) fclose($conn2525);
+    
+    return response()->json($results);
+});
