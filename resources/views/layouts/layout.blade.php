@@ -38,7 +38,7 @@
 
   <link rel="stylesheet" href="{{ asset('assets/css/jquery-ui.css') }}" />
 
-  <link rel="stylesheet" href="/assets/css/style.css" />
+   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
   <link
     href="{{ asset('sweet-alert2/sweetalert2.min.css') }}"
     rel="stylesheet"
@@ -527,7 +527,7 @@
     </div>
   </div>
 
-  <script src="/assets/js/jquery-3.6.0.min.js"></script>
+   <script src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
   <script src="{{ asset('assets/js/jquery-ui.js') }}"></script>
   <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
   <script src="{{ asset('assets/js/swiper-bundle.min.js') }}"></script>
