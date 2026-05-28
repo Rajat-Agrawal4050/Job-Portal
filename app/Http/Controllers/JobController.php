@@ -314,7 +314,7 @@ class JobController extends Controller
 
     Mail::to($employer->email)->send(new JobNotificationEmail($mailData));
 
-    session()->flash('success', 'Job applied Successfully.');
+    // session()->flash('success', 'Job applied Successfully.');
     return response()->json([
       'status' => true,
       'message' => 'Job applied Successfully.',

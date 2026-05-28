@@ -576,14 +576,18 @@ use App\Models\SavedJob;
               // })
               console.log(data)
               if (data.status == true) {
-                window.location.href = '{{ url()->current() }}';
+                Swal.fire('success', 'Job Applied Successfully.', 'success');
+                setTimeout(function() {
+                  window.location.href = '{{ url()->current() }}';
+                }, 1000);
+
               } else {
                 Swal.fire('Error', data.message, 'error');
               }
 
             },
             error: function(xhr, status, code) {
-              Swal.fire('Something went wrong', '', 'error');
+              Swal.fire('Something went wrong', xhr.responseText, 'error');
               console.error(xhr.responseText);
             }
 
