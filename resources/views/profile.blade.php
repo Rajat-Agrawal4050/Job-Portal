@@ -25,10 +25,10 @@
 <div class="job-listing-area mb-120">
   <div class="container">
     <div class="row g-lg-4 gy-5">
-      
+
       <div class="col-lg-4 order-lg-1 order-2">
         <div class="job-sidebar">
-          <div class="job-widget style-1">    
+          <div class="job-widget style-1">
             <div class="check-box-item">
               <h5 class="job-widget-title">{{$user->name}}</h5>
 
@@ -74,7 +74,7 @@
                       <div class="dashboard-sidebar">
                         <div class="dashboard-menu">
                           <ul style="display: flex; flex-direction: column">
-                       
+
                             <li>
                               <a href="/my-applications">
                                 <svg
@@ -363,12 +363,17 @@
           Swal.fire(response.errors.image_file[0], '', 'error');
         } else {
           Swal.fire('Image Uploaded Successfully', '', 'success');
-         
+
         }
 
       },
       error: function(xhr) {
-        Swal.fire('Error',xhr.responseText,'error');
+        if (xhr.status == 413) {
+          Swal.fire('Error', 'Image size is too Large.', 'error');
+        } else {
+          Swal.fire('Error', xhr.responseText, 'error');
+        }
+
         console.error(xhr.responseText);
       }
     });
@@ -449,7 +454,7 @@
           } else {
             $('#cpassword').parent().siblings('p').removeClass('text-danger').html('');
           }
-        
+
         } else {
           $('#old_password').parent().siblings('p').removeClass('text-danger').html('');
           $('#new_password').parent().siblings('p').removeClass('text-danger').html('');
@@ -464,7 +469,6 @@
       }
     })
   });
-
 </script>
 
 @endsection
