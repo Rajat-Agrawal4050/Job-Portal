@@ -368,6 +368,7 @@
 
       },
       error: function(xhr) {
+        Swal.fire('Error',xhr.responseText,'error');
         console.error(xhr.responseText);
       }
     });
