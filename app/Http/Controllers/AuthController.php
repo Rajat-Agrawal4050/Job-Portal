@@ -81,7 +81,7 @@ class AuthController extends Controller
       $user = new User();
       $user->name = $r->name;
       $user->email = $r->email;
-      $user->password = Hash::make($r->password3);
+      $user->password = $r->password3;
       $user->save();
 
       Auth::login($user);
@@ -169,7 +169,7 @@ class AuthController extends Controller
 
       User::where('id', $id)->update(['profile_pic' => $image_name]);
 
-      session()->flash('success', 'Profile Picture Uploaded Sucessfully.');
+      // session()->flash('success', 'Profile Picture Uploaded Sucessfully.');
 
       return response()->json([
         'status' => true,

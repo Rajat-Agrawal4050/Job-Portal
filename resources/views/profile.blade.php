@@ -363,9 +363,7 @@
           Swal.fire(response.errors.image_file[0], '', 'error');
         } else {
           Swal.fire('Image Uploaded Successfully', '', 'success');
-          setTimeout(function() {
-            window.location.href = '{{ url()->current() }}';
-          }, 1000);
+         
         }
 
       },
