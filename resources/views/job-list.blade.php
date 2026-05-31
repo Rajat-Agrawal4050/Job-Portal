@@ -188,7 +188,7 @@
       <div class="col-lg-8 order-lg-2 order-1">
 
         <div class="table-wrapper2" style="margin-top: 100px;">
-          <table class="eg-table table job-list-table mb-0">
+          <table class="eg-table table table-responsive job-list-table mb-0">
             <thead>
               <tr>
                 <th>Job Title</th>
