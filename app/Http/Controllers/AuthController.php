@@ -84,7 +84,7 @@ class AuthController extends Controller
       $user->password = $r->password3;
       $user->save();
 
-      Auth::login($user);
+      // Auth::login($user);
 
       return response()->json([
         'status' => true,
@@ -101,6 +101,10 @@ class AuthController extends Controller
 
   public function processLogin(Request $r)
   {
+
+   $redirect = $r->input('redirect');
+
+  //  return response()->json($r->all());
 
     $validator = Validator::make($r->all(), [
       'email' => 'required|email',
@@ -121,6 +125,7 @@ class AuthController extends Controller
         return response()->json([
           'status' => true,
           'login' => true,
+          'redirect' => $redirect ?: route('user.profile'),
           'errors' => []
         ]);
       } else {

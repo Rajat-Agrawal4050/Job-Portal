@@ -43,8 +43,8 @@ Route::middleware('auth')->group(function () {
 });
 
 // Guest Routes
-Route::get('/login', [AuthController::class, 'login'])->name('login');
-Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
+Route::get('/register', [AuthController::class, 'register'])->name('register')->middleware('guest');
 Route::post('/login', [AuthController::class, 'processLogin'])->middleware('throttle:5,1')->name('auth.processLogin'); // 5 attempts per 1 minute
 Route::post('/register', [AuthController::class, 'processRegister'])->name('auth.processRegister');
 

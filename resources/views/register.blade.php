@@ -279,7 +279,7 @@
           $('#password3').parent().siblings('p').removeClass('text-danger').html('');
           $('#password4').parent().siblings('p').removeClass('text-danger').html('');
 
-          window.location.href = '{{ route("user.profile") }}';
+          window.location.href = '{{ route("login") }}';
         }
       },
       error: function(xhr, status, code) {

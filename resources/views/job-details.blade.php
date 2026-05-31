@@ -140,7 +140,7 @@ use App\Models\SavedJob;
                   <button
                     class="primry-btn-2 lg-btn">Already Applied</button>
                   @elseif(!Auth::check())
-                  <button onclick="window.location.href='/login'" style="cursor: pointer;"
+                  <button onclick="window.location.href=`{{ route('login', ['redirect' => url()->current()]) }}`" style="cursor: pointer;"
                     class="primry-btn-2 lg-btn">Login to Apply</button>
                   @endif
               </li>

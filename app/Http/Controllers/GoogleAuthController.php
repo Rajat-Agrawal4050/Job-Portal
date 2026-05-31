@@ -16,8 +16,11 @@ class GoogleAuthController extends Controller
     /**
      * Redirect the user to Google’s OAuth page.
      */
-    public function redirect()
+    public function redirect(Request $request)
     {
+        if ($request->filled('redirect')) {
+            session(['url.intended' => $request->redirect]);
+        }
         return Socialite::driver('google')->redirect();
     }
 
@@ -30,7 +33,11 @@ class GoogleAuthController extends Controller
             // Get the user information from Google
             $user = Socialite::driver('google')->user();
         } catch (Throwable $e) {
-            return redirect('/login')->with('error', 'Google authentication failed.');
+            if (session()->has('url.intended')) {
+                return redirect()->route('login', ['redirect' => session('url.intended')])->with('error', 'Google authentication failed.');
+            } else {
+                return redirect()->route('login')->with('error', 'Google authentication failed.');
+            }
         }
 
         // Check if the user already exists in the database
@@ -53,6 +60,6 @@ class GoogleAuthController extends Controller
         }
 
         // Redirect the user to the dashboard or any other secure page
-        return redirect('/user/profile');
+        return redirect()->intended('/user/profile');
     }
 }

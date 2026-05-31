@@ -76,9 +76,15 @@
                     </div>
 
                     <div class="col-lg-12 text-center">
-                      <a href="{{ route('auth.google.redirect') }}" class="btn btn-light btn-lg text-center align-items-center shadow-sm border rounded-pill px-4 py-2 my-4">
-                        <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google Logo" class="me-2" width="24" height="24">
-                        &nbsp; <span class="">Login with Google</span>
+                      <a href="{{ route('auth.google.redirect', request()->has('redirect') ? ['redirect' => request('redirect')] : []) }}"
+                        class="btn btn-light btn-lg text-center align-items-center shadow-sm border rounded-pill px-4 py-2 my-4">
+                        <img src="https://img.icons8.com/color/48/000000/google-logo.png"
+                          alt="Google Logo"
+                          class="me-2"
+                          width="24"
+                          height="24">
+                        &nbsp;
+                        <span>Login with Google</span>
                       </a>
                       @foreach (['error', 'success', 'warning', 'info'] as $type)
                       @if (session($type))
@@ -173,7 +179,6 @@
 
     $.ajax({
       type: 'POST',
-      url: '{{ route("auth.processLogin") }}',
       data: form_data,
       processData: false,
       contentType: false,
@@ -199,7 +204,7 @@
           $('#password').parent().siblings('p').removeClass('text-danger').html('');
 
           if (resp.login == true) {
-            window.location.href = '{{ route("user.profile") }}';
+            window.location.href = resp.redirect;
           } else {
             $("#msg2").removeClass('d-none');
             $("#msg2").children('span').html('Invalid Credentials, Please Try Again.');
@@ -209,7 +214,7 @@
 
       },
       error: function(xhr, status, code) {
-        console.error(xhr);
+        console.error(xhr.status);
       },
     });
 
