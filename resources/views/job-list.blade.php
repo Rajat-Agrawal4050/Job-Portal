@@ -374,6 +374,7 @@
           },
           error: function(xhr, status, code) {
             console.error(xhr.responseText);
+            Swal.fire('Error',xhr.responseText,'error');
           }
 
         })

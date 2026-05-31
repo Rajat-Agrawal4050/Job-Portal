@@ -1,11 +1,8 @@
 <?php
 
-use App\Http\Controllers\admin\DashboardController;
-use App\Http\Controllers\admin\JobController as AdminJobController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\GuestUser;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\admin\JobsController;
@@ -14,23 +11,10 @@ use App\Http\Controllers\GoogleAuthController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
-
-Route::get('/job-post', [JobController::class, 'job_post'])->name('job.post_form');
-Route::get('/job-list', [JobController::class, 'job_list'])->name('job.list');
-Route::post('/job-post', [JobController::class, 'saveJob'])->name('job.post');
-Route::get('/edit-job/{id}', [JobController::class, 'showEditJob'])->name('show.editjob');
-Route::post('/edit-job', [JobController::class, 'editJob'])->name('edit.job');
-Route::delete('/delete-job', [JobController::class, 'deleteJob'])->name('delete.job');
-Route::get('/job-listing', [JobController::class, 'jobListing'])->name('job.listing');
 Route::get('/job-detail/{id}', [JobController::class, 'job_detail'])->name('job.detail');
-Route::post('/apply-job', [JobController::class, 'apply_job'])->name('apply.job');
-Route::post('/saved-job', [JobController::class, 'savedJob'])->name('saved.job');
-Route::get('/saved-jobs', [JobController::class, 'savedJobs'])->name('job.savedJobs');
-Route::delete('/delete-savedjob', [JobController::class, 'deleteSavedJob'])->name('delete.savedjob');
+Route::get('/job-listing', [JobController::class, 'jobListing'])->name('job.listing');
 Route::post('/send-message', [JobController::class, 'sendMessage'])->name('send.message');
 
-Route::post('/upload-image', [AuthController::class, 'uploadImage'])->name('upload.image');
-Route::post('/remove-application', [JobController::class, 'removeApplication'])->name('remove.application');
 
 // Authenticated Routes
 Route::middleware('auth')->group(function () {
@@ -40,11 +24,25 @@ Route::middleware('auth')->group(function () {
     Route::post('/update-password', [AuthController::class, 'updatePassword'])->name('update.password');
     Route::get('/my-applications', [JobController::class, 'my_applications'])->name('my.applications');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    Route::get('/job-post', [JobController::class, 'job_post'])->name('job.post_form');
+    Route::get('/job-list', [JobController::class, 'job_list'])->name('job.list');
+    Route::post('/job-post', [JobController::class, 'saveJob'])->name('job.post');
+    Route::get('/edit-job/{id}', [JobController::class, 'showEditJob'])->name('show.editjob');
+    Route::post('/edit-job', [JobController::class, 'editJob'])->name('edit.job');
+    Route::delete('/delete-job', [JobController::class, 'deleteJob'])->name('delete.job');
+    Route::post('/apply-job', [JobController::class, 'apply_job'])->name('apply.job');
+    Route::post('/saved-job', [JobController::class, 'savedJob'])->name('saved.job');
+    Route::get('/saved-jobs', [JobController::class, 'savedJobs'])->name('job.savedJobs');
+    Route::delete('/delete-savedjob', [JobController::class, 'deleteSavedJob'])->name('delete.savedjob');
+    Route::post('/upload-image', [AuthController::class, 'uploadImage'])->name('upload.image');
+    Route::post('/remove-application', [JobController::class, 'removeApplication'])->name('remove.application');
 });
 
 // Guest Routes
 Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
 Route::get('/register', [AuthController::class, 'register'])->name('register')->middleware('guest');
+
 Route::post('/login', [AuthController::class, 'processLogin'])->middleware('throttle:5,1')->name('auth.processLogin'); // 5 attempts per 1 minute
 Route::post('/register', [AuthController::class, 'processRegister'])->name('auth.processRegister');
 

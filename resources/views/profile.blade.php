@@ -343,6 +343,18 @@
       return;
     }
 
+    if (file.size > (2 * 1024 * 1024)) {
+      Swal.fire('Image size should be less than 2 MB', '', 'error');
+      return;
+    }
+
+    const allowedTypes = ['image/jpg', 'image/jpeg', 'image/png', 'image/webp'];
+
+    if (!allowedTypes.includes(file.type)) {
+      Swal.fire('Only JPG, PNG and WEBP images are allowed', '', 'error');
+      return;
+    }
+
     let formData = new FormData();
     formData.append('image_file', file);
     formData.append('file_upload', true);
@@ -423,6 +435,7 @@
       },
       error: function(xhr, status, code) {
         console.error(xhr.responseText);
+        Swal.fire('Error', xhr.responseText, 'error');
       }
     })
   });
@@ -466,6 +479,7 @@
       },
       error: function(xhr, status, code) {
         console.error(xhr.responseText);
+        Swal.fire('Error', xhr.responseText, 'error');
       }
     })
   });
