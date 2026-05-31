@@ -20,6 +20,10 @@ class GoogleAuthController extends Controller
     {
         if ($request->filled('redirect')) {
             session(['url.intended' => $request->redirect]);
+        } else {
+            if (session()->has('url.intended')) {
+                session()->forget('url.intended');
+            }
         }
         return Socialite::driver('google')->redirect();
     }
